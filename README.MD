@@ -1,15 +1,29 @@
 # Polyxiety
 A tool to monitor checkpoints on the Polygon network, and provide prometheus metrics relevant to a validator signing/missing checkpoints
-
+## Dependencies
+- Install pipx
+```
+sudo apt install pipx
+```
+- Install pipenv
+```
+pipx install pipenv
+```
+- Install Dependencies
+```
+git clone git@github.com:Arjun-Somvanshi/polyxiety.git
+cd ~/polyxiety
+pipenv install
+```
 ## Usage
-Make a config file in src/config.json something like:
+Make a config file in ~/polyxiety/src/config.json something like:
 ```json
 {
   "validator_address": "0x9eaD03F7136Fc6b4bDb0780B00a1c14aE5A8B6d0",
   "validator_name": "Luganodes"
 }
 ```
-The repository comes with a service file
+The repository comes with a service file and a start.sh script edit paths in them to suit your setup.
 
 ## Metrics
 - See metrics
