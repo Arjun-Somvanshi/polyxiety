@@ -1,0 +1,16 @@
+[Unit]
+Description=Polyxiety Monitoring for Checkpoints
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=ubuntu # change this to your user
+Group=ubuntu # change this to your user 
+Type=simple
+Restart=on-failure
+Environment="HOME_DIR=/home/ubuntu/"
+ExecStart="$HOME_DIR/.local/bin/pipenv run python $HOME_DIR/polyxiety/src/main.py"
+SyslogIdentifier=zillmon
+
+[Install]
+WantedBy=multi-user.target
