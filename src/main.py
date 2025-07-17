@@ -55,9 +55,9 @@ def check_for_missed_checkpoints(latest_known_checkpoint):
                 break
         if checkpoint_data[0]["value"] > latest_known_checkpoint:
             latest_known_checkpoint = checkpoint_data[0]["value"]
+            missed_last_checkpoint_gauge.labels(validator_address=VALIDATOR_ADDRESS).set(0)
+            missed_checkpoint_in_last_5_gauge.labels(validator_address=VALIDATOR_ADDRESS).set(0)
             for checkpoint in checkpoint_data:
-                missed_last_checkpoint_gauge.labels(validator_address=VALIDATOR_ADDRESS).set(0)
-                missed_checkpoint_in_last_5_gauge.labels(validator_address=VALIDATOR_ADDRESS).set(0)
                 checkpoint_number = checkpoint["value"]
                 index = checkpoint_data.index(checkpoint)
                 if checkpoint["isSigned"] == False:
